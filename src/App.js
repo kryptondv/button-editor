@@ -8,6 +8,7 @@ import TextInput from './components/textInput/TextInput';
 import CodeDisplay from './components/codeDisplay/CodeDisplay';
 
 function App() {
+  // state
   const [text, setText] = useState('Click me!');
   const [background, setBackground] = useState('#119911');
   const [color, setColor] = useState('#ffffff');
@@ -16,6 +17,7 @@ function App() {
   const [paddingY, setPaddingY] = useState(32);
   const [radius, setRadius] = useState(5);
 
+  // debouncing functions
   const debounceBgChange = debounce(value => setBackground(value), 15);
   const debounceColorChange = debounce(value => setColor(value), 15);
   const debounceTextChange = debounce(value => setText(value), 15);
@@ -24,33 +26,35 @@ function App() {
   const debouncePaddingYChange = debounce(value => setPaddingY(value), 15);
   const debounceRadiusChange = debounce(value => setRadius(value), 15);
 
-  const handleBackgroundChange = value => {
-    debounceBgChange(value);
-  };
-
-  const handleColorChange = value => {
-    debounceColorChange(value);
-  };
-
-  const handleTextChange = value => {
-    debounceTextChange(value);
-  };
-
-  const handleFontSizeChange = value => {
-    debounceFontSizeChange(value);
-  };
-
-  const handlePaddingXChange = value => {
-    debouncePaddingXChange(value);
-  };
-
-  const handlePaddingYChange = value => {
-    debouncePaddingYChange(value);
-  };
-
-  const handleRadiusChange = value => {
-    debounceRadiusChange(value);
-  };
+  // event handler
+  const handleChange = (value, name) => {
+    switch(name) {
+      case 'background': 
+        debounceBgChange(value);
+        break;
+      case 'color': 
+        debounceColorChange(value);
+        break;
+      case 'text': 
+        debounceTextChange(value);
+        break;
+      case 'font-size': 
+        debounceFontSizeChange(value);
+        break;
+      case 'paddingX': 
+        debouncePaddingXChange(value);
+        break;
+      case 'paddingY': 
+        debouncePaddingYChange(value);
+        break;
+      case 'radius': 
+        debounceRadiusChange(value);
+        break;
+      default:
+        return;
+    }
+  }
+  
 
   return (
     <div className="app">
@@ -67,35 +71,35 @@ function App() {
             fontSize={fontSize}
           />
         </div>
-        <TextInput name="text" value={text} handler={handleTextChange} />
+        <TextInput name="text" value={text} handler={handleChange} />
         <div className="color-inputs">
-          <ColorInput name="color" value={color} handler={handleColorChange} />
+          <ColorInput name="color" value={color} handler={handleChange} />
           <ColorInput
             name="background"
             value={background}
-            handler={handleBackgroundChange}
+            handler={handleChange}
           />
         </div>
         <div className="range-inputs">
           <RangeInput
             name="font-size"
             value={fontSize}
-            handler={handleFontSizeChange}
+            handler={handleChange}
           />
           <RangeInput
             name="paddingX"
             value={paddingX}
-            handler={handlePaddingXChange}
+            handler={handleChange}
           />
           <RangeInput
             name="paddingY"
             value={paddingY}
-            handler={handlePaddingYChange}
+            handler={handleChange}
           />
           <RangeInput
             name="radius"
             value={radius}
-            handler={handleRadiusChange}
+            handler={handleChange}
           />
         </div>
         <CodeDisplay
