@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './components/button/Button';
+import ColorInput from './components/colorInput/ColorInput';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         radius="5px"
         text="Click me!"
       />
+      <ColorInput name="background" />
+      <ColorInput name="colour" />
     </div>
   );
 }
