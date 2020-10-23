@@ -5,6 +5,7 @@ const StyledButton = styled.button`
   padding: ${props => props.paddingX} ${props => props.paddingY};
   color: ${props => props.color};
   border-radius: ${props => props.radius};
+  font-size: ${props => props.fontSize};
   border: none;
   margin: 0 auto;
   display: block;
