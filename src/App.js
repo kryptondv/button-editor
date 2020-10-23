@@ -2,7 +2,7 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <h1>Button Editor</h1>
     </div>
   );
