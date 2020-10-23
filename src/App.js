@@ -54,9 +54,51 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Button Editor</h1>
-      <div className="button-container">
-        <Button
+      <main>
+        <h1>Button Editor</h1>
+        <div className="button-container">
+          <Button
+            background={background}
+            paddingX={paddingX}
+            paddingY={paddingY}
+            color={color}
+            radius={radius}
+            text={text}
+            fontSize={fontSize}
+          />
+        </div>
+        <TextInput name="text" value={text} handler={handleTextChange} />
+        <div className="color-inputs">
+          <ColorInput name="color" value={color} handler={handleColorChange} />
+          <ColorInput
+            name="background"
+            value={background}
+            handler={handleBackgroundChange}
+          />
+        </div>
+        <div className="range-inputs">
+          <RangeInput
+            name="font-size"
+            value={fontSize}
+            handler={handleFontSizeChange}
+          />
+          <RangeInput
+            name="paddingX"
+            value={paddingX}
+            handler={handlePaddingXChange}
+          />
+          <RangeInput
+            name="paddingY"
+            value={paddingY}
+            handler={handlePaddingYChange}
+          />
+          <RangeInput
+            name="radius"
+            value={radius}
+            handler={handleRadiusChange}
+          />
+        </div>
+        <CodeDisplay
           background={background}
           paddingX={paddingX}
           paddingY={paddingY}
@@ -65,39 +107,7 @@ function App() {
           text={text}
           fontSize={fontSize}
         />
-      </div>
-      <TextInput name="text" value={text} handler={handleTextChange} />
-      <ColorInput
-        name="background"
-        value={background}
-        handler={handleBackgroundChange}
-      />
-      <ColorInput name="color" value={color} handler={handleColorChange} />
-      <RangeInput
-        name="font-size"
-        value={fontSize}
-        handler={handleFontSizeChange}
-      />
-      <RangeInput
-        name="paddingX"
-        value={paddingX}
-        handler={handlePaddingXChange}
-      />
-      <RangeInput
-        name="paddingY"
-        value={paddingY}
-        handler={handlePaddingYChange}
-      />
-      <RangeInput name="radius" value={radius} handler={handleRadiusChange} />
-      <CodeDisplay
-        background={background}
-        paddingX={paddingX}
-        paddingY={paddingY}
-        color={color}
-        radius={radius}
-        text={text}
-        fontSize={fontSize}
-      />
+      </main>
     </div>
   );
 }

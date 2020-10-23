@@ -16,10 +16,22 @@ h1 {
   text-align: center;
 }
 
+main {
+  width: 100%;
+  background: rgb(235, 235, 235);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
 .app {
   width: 90%;
   max-width: 400px;
   margin: 0 auto;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -27,7 +39,12 @@ h1 {
   min-height: 50px;
 }
 
+.color-inputs {
+  display: flex;
+  justify-content: space-between;
+}
 
-.code-display span {
-  display: block;
+.range-inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
