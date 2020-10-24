@@ -17,44 +17,21 @@ function App() {
   const [paddingY, setPaddingY] = useState(32);
   const [radius, setRadius] = useState(5);
 
-  // debouncing functions
-  const debounceBgChange = debounce(value => setBackground(value), 15);
-  const debounceColorChange = debounce(value => setColor(value), 15);
-  const debounceTextChange = debounce(value => setText(value), 15);
-  const debounceFontSizeChange = debounce(value => setFontSize(value), 15);
-  const debouncePaddingXChange = debounce(value => setPaddingX(value), 15);
-  const debouncePaddingYChange = debounce(value => setPaddingY(value), 15);
-  const debounceRadiusChange = debounce(value => setRadius(value), 15);
+  // debounce functions
+  const debounceFunctions = {
+    background: debounce(value => setBackground(value), 15),
+    color: debounce(value => setColor(value), 15),
+    text: debounce(value => setText(value), 15),
+    'font-size': debounce(value => setFontSize(value), 15),
+    paddingX: debounce(value => setPaddingX(value), 15),
+    paddingY: debounce(value => setPaddingY(value), 15),
+    radius: debounce(value => setRadius(value), 15),
+  };
 
   // event handler
   const handleChange = (value, name) => {
-    switch(name) {
-      case 'background': 
-        debounceBgChange(value);
-        break;
-      case 'color': 
-        debounceColorChange(value);
-        break;
-      case 'text': 
-        debounceTextChange(value);
-        break;
-      case 'font-size': 
-        debounceFontSizeChange(value);
-        break;
-      case 'paddingX': 
-        debouncePaddingXChange(value);
-        break;
-      case 'paddingY': 
-        debouncePaddingYChange(value);
-        break;
-      case 'radius': 
-        debounceRadiusChange(value);
-        break;
-      default:
-        return;
-    }
-  }
-  
+    debounceFunctions[name](value);
+  };
 
   return (
     <div className="app">
@@ -86,21 +63,9 @@ function App() {
             value={fontSize}
             handler={handleChange}
           />
-          <RangeInput
-            name="paddingX"
-            value={paddingX}
-            handler={handleChange}
-          />
-          <RangeInput
-            name="paddingY"
-            value={paddingY}
-            handler={handleChange}
-          />
-          <RangeInput
-            name="radius"
-            value={radius}
-            handler={handleChange}
-          />
+          <RangeInput name="paddingX" value={paddingX} handler={handleChange} />
+          <RangeInput name="radius" value={radius} handler={handleChange} />
+          <RangeInput name="paddingY" value={paddingY} handler={handleChange} />
         </div>
         <CodeDisplay
           background={background}
